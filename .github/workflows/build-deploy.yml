@@ -22,6 +22,9 @@ jobs:
       with:
         node-version: 13.x
     
+    - name: Change WorkDir
+      run: cd fuel-georgia
+      
     - name: Install NPM packages
       run: npm ci
     

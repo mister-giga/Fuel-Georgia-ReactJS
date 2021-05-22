@@ -8,14 +8,24 @@ import CompanyItem from './CompanyItem';
 import LoadingComponent from './LoadingComponent';
 
 
+
 export default function CompaniesListing(){
     const [companies, setCompanies] = useState<Company[]|null>(null);
     const history = useHistory();
   
     const queryDataRef = useRef<QueryData>(getQueryData());
-    const [queryData, setQeuryData] = useState<QueryData>(queryDataRef.current);
     
-    useEffect(()=> { history.push(getFreshUrl(queryData)); }, [queryData, history]);
+    const [queryData, setQeuryData] = useState<QueryData>(queryDataRef.current);
+    const lastSetUrlRef = useRef<string|null>(null);
+    
+    useEffect(()=> {
+        const newUrl = getFreshUrl(queryData);
+        if(lastSetUrlRef.current !== newUrl){
+            lastSetUrlRef.current = newUrl;
+            window.alert(newUrl);
+            history.push(newUrl);
+        }
+     }, [queryData,history]);
 
     useEffect(()=>{
         if(companies === null){

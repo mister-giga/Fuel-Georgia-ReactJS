@@ -15,5 +15,6 @@ export function getQueryData(){
 export function getFreshUrl(data:QueryData) {
     var searchParams = new URLSearchParams(window.location.search);
     searchParams.set("cmp", data.openedCompanyKeys.join('.'));
-    return "?" + searchParams.toString();
+    const url = "?" + searchParams.toString();
+    return url;
 }

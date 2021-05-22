@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Company from '../../models/Company';
 import { GetCompaniesAsync } from '../../services/DataService';
 import HandleError from '../../services/ErrorHandler';
@@ -15,7 +15,7 @@ export default function CompaniesListing(){
     const queryDataRef = useRef<QueryData>(getQueryData());
     const [queryData, setQeuryData] = useState<QueryData>(queryDataRef.current);
     
-    useEffect(()=> { history.push(getFreshUrl(queryData)); }, [queryData]);
+    useEffect(()=> { history.push(getFreshUrl(queryData)); }, [queryData, history]);
 
     useEffect(()=>{
         if(companies === null){
@@ -34,7 +34,7 @@ export default function CompaniesListing(){
     }
 
     const isCompanyOpenChanged = (companyKey:string, isOpen:boolean) => {
-        setQeuryData(x=> ({...x, openedCompanyKeys: isOpen ? Array.from(new Set([...x.openedCompanyKeys, companyKey])): x.openedCompanyKeys.filter(c=>c!= companyKey)}));
+        setQeuryData(x=> ({...x, openedCompanyKeys: isOpen ? Array.from(new Set([...x.openedCompanyKeys, companyKey])): x.openedCompanyKeys.filter(c=>c!== companyKey)}));
     }
 
     return <>

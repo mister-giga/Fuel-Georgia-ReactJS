@@ -11,7 +11,7 @@ async function getAsync<T> (route:string):Promise<T> {
     const url = getUrl(route);
     const response = await fetch(url);
     if(!response.ok){
-        throw 'მოხდა შეცდომა';
+        throw new Error('მოხდა შეცდომა');
     }
     const data = await response.json();
     return data;

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router';
 import Company from '../../models/Company';
 import { GetCompanyLogoUrl } from '../../services/DataService';
 
@@ -19,14 +18,14 @@ function getBadgeClass(number:number){
 }
 
 export default function CompanyItem(props:{company:Company, isOpen:boolean, isOpenChanged:(companyKey:string, isOpen:boolean) => void}){
-    const { company } = props;
+    const { company, isOpenChanged } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(props.isOpen);
     const isOpenRef = useRef(isOpen);
 
     useEffect(()=>{
-        props.isOpenChanged(company.key, isOpen);
-    }, [isOpen]);
+        isOpenChanged(company.key, isOpen);
+    }, [isOpen, isOpenChanged, company.key]);
 
     const collapsableDivId = `collapsable_${company.key}`;
 
@@ -37,7 +36,7 @@ export default function CompanyItem(props:{company:Company, isOpen:boolean, isOp
             <div className={`accordion-item`}>
                 <h2 className="accordion-header">
                     <button className={`accordion-button ${isOpenRef.current ? '' : 'collapsed'}`} type="button"  data-bs-toggle="collapse" data-bs-target={`#${collapsableDivId}`} aria-expanded="true" aria-controls="collapseOne" onClick={onOpenClose}>
-                        <img src={GetCompanyLogoUrl(company.key)} width='50' height='50' style={{marginRight:'16px'}}/>
+                        <img src={GetCompanyLogoUrl(company.key)} alt={`${company.key} logo`} width='50' height='50' style={{marginRight:'16px'}}/>
                         <h3>{company.name}</h3>
                     </button>
                 </h2>

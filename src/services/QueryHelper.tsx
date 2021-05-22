@@ -1,10 +1,10 @@
 import { atom, selector, selectorFamily } from "recoil";
 
 export interface MapDialogData{
-    companyKey:String
+    companyKey:string
 }
 export interface ChartDialogData extends MapDialogData {
-    fuelKey:String
+    fuelKey:string
 }
 
 export enum DialogType { Map = 'map', Chart = 'chart' }

@@ -1,4 +1,5 @@
 import Company from "../models/Company";
+import PricePoint from "../models/PricePoint";
 
 const baseUrl = "https://raw.githubusercontent.com/mister-giga/Fuel-Georgia/main";
 const getUrl = (route:string):string => `${baseUrl}/${route}`;
@@ -26,5 +27,5 @@ export function GetLocationsAsync(companyKey:string){
 }
 
 export function GetPriceChangesAsync(companyKey:string, fuelKey:string){
-    return getAsync<Location[]>(`data/${companyKey}/priceChanges/${fuelKey}.json`);
+    return getAsync<PricePoint[]>(`data/${companyKey}/priceChanges/${fuelKey}.json`);
 }

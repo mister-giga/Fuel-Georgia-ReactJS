@@ -1,18 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import Company from '../../models/Company';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { GetCompaniesAsync } from '../../services/DataService';
 import HandleError from '../../services/ErrorHandler';
 import { getFreshUrl, queryDataState } from '../../services/QueryHelper';
 import CompanyItem from './CompanyItem';
 import LoadingComponent from './LoadingComponent';
 import ChartComponent from './ChartComponent'
-
-
+import { CompaniesAtom } from '../../services/CompaniesAtom'
 
 export default function CompaniesListing(){
-    const [companies, setCompanies] = useState<Company[]|null>(null);
+    const [companies, setCompanies] = useRecoilState(CompaniesAtom);// useState<Company[]|null>(null);
     const history = useHistory();
   
     const queryData = useRecoilValue(queryDataState);    
@@ -36,7 +34,7 @@ export default function CompaniesListing(){
                 }
             })();
         }
-    }, [companies]);
+    }, [companies, setCompanies]);
 
     if(companies === null){
         return <LoadingComponent loadingText="იტვირთება კომპანიები..."/>;

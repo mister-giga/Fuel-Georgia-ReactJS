@@ -22,7 +22,6 @@ export default function CompaniesListing(){
         const newUrl = getFreshUrl(queryData);
         if(lastSetUrlRef.current !== newUrl){
             lastSetUrlRef.current = newUrl;
-            window.alert(newUrl);
             history.push(newUrl);
         }
      }, [queryData,history]);

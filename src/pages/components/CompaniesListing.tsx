@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import Company from '../../models/Company';
 import { GetCompaniesAsync } from '../../services/DataService';
 import HandleError from '../../services/ErrorHandler';
-import { getFreshUrl, getQueryData, QueryData } from '../../services/QueryHelper';
+import { getFreshUrl, queryDataState } from '../../services/QueryHelper';
 import CompanyItem from './CompanyItem';
 import LoadingComponent from './LoadingComponent';
+import ChartComponent from './ChartComponent'
 
 
 
@@ -13,9 +15,7 @@ export default function CompaniesListing(){
     const [companies, setCompanies] = useState<Company[]|null>(null);
     const history = useHistory();
   
-    const queryDataRef = useRef<QueryData>(getQueryData());
-    
-    const [queryData, setQeuryData] = useState<QueryData>(queryDataRef.current);
+    const queryData = useRecoilValue(queryDataState);    
     const lastSetUrlRef = useRef<string|null>(null);
     
     useEffect(()=> {
@@ -42,11 +42,8 @@ export default function CompaniesListing(){
         return <LoadingComponent loadingText="იტვირთება კომპანიები..."/>;
     }
 
-    const isCompanyOpenChanged = (companyKey:string, isOpen:boolean) => {
-        setQeuryData(x=> ({...x, openedCompanyKeys: isOpen ? Array.from(new Set([...x.openedCompanyKeys, companyKey])): x.openedCompanyKeys.filter(c=>c!== companyKey)}));
-    }
-
     return <>
-        {companies.map(x=><CompanyItem company={x} key={x.key} isOpen={queryDataRef.current.openedCompanyKeys.some(c=>c === x.key)} isOpenChanged={isCompanyOpenChanged}/>)}
+        {companies.map(x=><CompanyItem company={x} key={x.key}/>)}
+        <ChartComponent/>
     </>
 }

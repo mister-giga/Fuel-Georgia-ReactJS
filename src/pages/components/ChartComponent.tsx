@@ -86,10 +86,11 @@ function ChartItem(props:{originalData:PricePoint[],color:string}){
                 data: {
                     labels: chartLabels,
                     datasets: [{
-                        label: '# of Votes',
+                        label: 'GEL',
                         data: chartData,
                         stepped: 'before',
-                        borderColor:color
+                        borderColor:color,
+                        pointBackgroundColor:'white'
                     }]
                 },
                 options: {
@@ -98,6 +99,17 @@ function ChartItem(props:{originalData:PricePoint[],color:string}){
                     plugins:{
                         legend:{
                             display:false
+                        }
+                    },
+                    scales:{
+                        y:{
+                            type:'linear',
+                            grace:'5%',
+                            ticks:{
+                                callback:function (value, index, values) {
+                                    return `${Number(value).toFixed(2)}`
+                                }
+                            }
                         }
                     }
                 }

@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Fuel-Georgia-ReactJS/static/css/main.7ae03408.chunk.css",
-    "main.js": "/Fuel-Georgia-ReactJS/static/js/main.a6d32ea9.chunk.js",
-    "main.js.map": "/Fuel-Georgia-ReactJS/static/js/main.a6d32ea9.chunk.js.map",
+    "main.js": "/Fuel-Georgia-ReactJS/static/js/main.a65f0910.chunk.js",
+    "main.js.map": "/Fuel-Georgia-ReactJS/static/js/main.a65f0910.chunk.js.map",
     "runtime-main.js": "/Fuel-Georgia-ReactJS/static/js/runtime-main.ca44d248.js",
     "runtime-main.js.map": "/Fuel-Georgia-ReactJS/static/js/runtime-main.ca44d248.js.map",
-    "static/js/2.645afcba.chunk.js": "/Fuel-Georgia-ReactJS/static/js/2.645afcba.chunk.js",
-    "static/js/2.645afcba.chunk.js.map": "/Fuel-Georgia-ReactJS/static/js/2.645afcba.chunk.js.map",
+    "static/js/2.1cfaf4c9.chunk.js": "/Fuel-Georgia-ReactJS/static/js/2.1cfaf4c9.chunk.js",
+    "static/js/2.1cfaf4c9.chunk.js.map": "/Fuel-Georgia-ReactJS/static/js/2.1cfaf4c9.chunk.js.map",
     "static/js/3.79069187.chunk.js": "/Fuel-Georgia-ReactJS/static/js/3.79069187.chunk.js",
     "static/js/3.79069187.chunk.js.map": "/Fuel-Georgia-ReactJS/static/js/3.79069187.chunk.js.map",
     "index.html": "/Fuel-Georgia-ReactJS/index.html",
     "static/css/main.7ae03408.chunk.css.map": "/Fuel-Georgia-ReactJS/static/css/main.7ae03408.chunk.css.map",
-    "static/js/2.645afcba.chunk.js.LICENSE.txt": "/Fuel-Georgia-ReactJS/static/js/2.645afcba.chunk.js.LICENSE.txt"
+    "static/js/2.1cfaf4c9.chunk.js.LICENSE.txt": "/Fuel-Georgia-ReactJS/static/js/2.1cfaf4c9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ca44d248.js",
-    "static/js/2.645afcba.chunk.js",
+    "static/js/2.1cfaf4c9.chunk.js",
     "static/css/main.7ae03408.chunk.css",
-    "static/js/main.a6d32ea9.chunk.js"
+    "static/js/main.a65f0910.chunk.js"
   ]
 }

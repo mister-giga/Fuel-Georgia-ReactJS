@@ -8,6 +8,7 @@ import CompanyItem from './CompanyItem';
 import LoadingComponent from './LoadingComponent';
 import ChartComponent from './ChartComponent'
 import { CompaniesAtom } from '../../services/CompaniesAtom'
+import MapComponent from './MapComponent';
 
 export default function CompaniesListing(){
     const [companies, setCompanies] = useRecoilState(CompaniesAtom);// useState<Company[]|null>(null);
@@ -43,5 +44,6 @@ export default function CompaniesListing(){
     return <>
         {companies.map(x=><CompanyItem company={x} key={x.key}/>)}
         <ChartComponent/>
+        <MapComponent/>
     </>
 }

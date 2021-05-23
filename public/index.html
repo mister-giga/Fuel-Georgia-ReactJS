@@ -20,5 +20,11 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>function initMap(){console.log('GoogleMapsInitialized')}</script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX6eW9CISKvVHVgZbOTXNR-E4Ur6GSGg0&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
   </body>
 </html>

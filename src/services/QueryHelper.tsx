@@ -107,6 +107,25 @@ export const chartDataSelector = selector<ChartDialogData|null>({
     }
 });
 
+export const mapDataSelector = selector<MapDialogData|null>({
+    key: 'mapDataSelector',
+    get: ({get}) => {
+        const data = get(queryDataState);
+        if(data.dialog === DialogType.Map){
+            return data.dialogData as MapDialogData;
+        }
+        return null;
+    },
+    set: ({get, set}, newData) => {
+        const data = get(queryDataState);
+        if(newData === null) {
+            set(queryDataState, {...data, dialog: null, dialogData: null})
+        } else {
+            set(queryDataState, {...data, dialog: DialogType.Map, dialogData: newData as MapDialogData});
+        }
+    }
+});
+
 // export const isDisplayingChartSelector = selectorFamily<boolean, {companyKey:string, fuelKey:string}>({
 //     key: 'isDisplayingChartSelector',
 //     get: param => ({get}) => {

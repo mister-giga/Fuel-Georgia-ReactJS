@@ -1,4 +1,5 @@
 import Company from "../models/Company";
+import PinPoint from "../models/PinPoint";
 import PricePoint from "../models/PricePoint";
 
 const baseUrl = "https://raw.githubusercontent.com/mister-giga/Fuel-Georgia/main";
@@ -23,7 +24,7 @@ export function GetCompaniesAsync() {
 }
 
 export function GetLocationsAsync(companyKey:string){
-    return getAsync<Location[]>(`data/${companyKey}/locations.json`);
+    return getAsync<PinPoint[]>(`data/${companyKey}/locations.json`);
 }
 
 export function GetPriceChangesAsync(companyKey:string, fuelKey:string){

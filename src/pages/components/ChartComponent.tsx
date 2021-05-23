@@ -49,17 +49,13 @@ function ChartItem(props:{originalData:PricePoint[],color:string}){
             
             
             for(let i = 0; i < mappedData.length - 1; i++){
-                console.log('x');
                 const currItem = mappedData[i];
                 const nextItem = mappedData[i+1].date.getTime();
 
-
-                console.log(currItem.date.getTime(), nextItem)
                 if(currItem.date.getTime() >= nextItem) continue;
 
                 let dateTracker = currItem.date;
                 while(dateTracker.getTime() < nextItem){
-                    console.log('c')
                     chartData.push(currItem.price);
                     chartLabels.push(dateToString(currItem.date));
                     dateTracker.setDate(dateTracker.getDate() + 1)

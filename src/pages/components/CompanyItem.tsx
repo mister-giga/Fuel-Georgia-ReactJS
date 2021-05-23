@@ -3,7 +3,7 @@ import React, {  useEffect, useRef } from 'react'
 import {  useRecoilState, useSetRecoilState } from 'recoil';
 import Company from '../../models/Company';
 import { GetCompanyLogoUrl } from '../../services/DataService';
-import { chartDataSelector, isCompanyOpenedSelector } from '../../services/QueryHelper';
+import { chartDataSelector, isCompanyOpenedSelector, mapDataSelector } from '../../services/QueryHelper';
 
 function getSign(number:number){
     if(number>0)
@@ -56,6 +56,7 @@ export default function CompanyItem(props:{company:Company}){
     },[isOpen]);
 
     const setDisplayChart = useSetRecoilState(chartDataSelector);
+    const setDisplayMap = useSetRecoilState(mapDataSelector);
 
     const onOpenClose = () => !isAnimatingRef.current && setIsOpen(x=>!x);
 
@@ -68,7 +69,7 @@ export default function CompanyItem(props:{company:Company}){
                     <h3 style={{padding:'0'}}>{company.name}</h3>
                 </div>
                 <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                    <button type="button" className="btn btn-primary" style={{backgroundColor:company.color, borderColor:company.color, marginRight:'10px'}} title='რუკა'><i className="fas fa-map-marked-alt"></i></button>
+                    <button type="button" className="btn btn-primary" style={{backgroundColor:company.color, borderColor:company.color, marginRight:'10px'}} title='რუკა' onClick={(e)=>{e.stopPropagation(); setDisplayMap({companyKey:company.key});}}><i className="fas fa-map-marked-alt"></i></button>
                     <i className={`fas fa-chevron-${isOpen ? 'up' : 'down'}`} style={{marginLeft:'10px', marginRight:'10px'}}></i>
                 </div>
             </div>

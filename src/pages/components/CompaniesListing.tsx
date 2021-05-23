@@ -20,7 +20,7 @@ export default function CompaniesListing(){
         const newUrl = getFreshUrl(queryData);
         if(lastSetUrlRef.current !== newUrl){
             lastSetUrlRef.current = newUrl;
-            history.push(newUrl);
+            history.replace(newUrl);
         }
      }, [queryData,history]);
 
